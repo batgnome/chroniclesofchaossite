@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "title": "First Blog Post",
+        "content": "This is the first post in my blog!",
+        "image": "https://example.com/sample-image.jpg",
+        "date": "2025-02-18"
+      }
+]
