@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chroniclesofchaossite/static/css/main.0bf48097.css",
+    "main.js": "/chroniclesofchaossite/static/js/main.142b55a4.js",
+    "static/js/453.490aa95d.chunk.js": "/chroniclesofchaossite/static/js/453.490aa95d.chunk.js",
+    "index.html": "/chroniclesofchaossite/index.html",
+    "main.0bf48097.css.map": "/chroniclesofchaossite/static/css/main.0bf48097.css.map",
+    "main.142b55a4.js.map": "/chroniclesofchaossite/static/js/main.142b55a4.js.map",
+    "453.490aa95d.chunk.js.map": "/chroniclesofchaossite/static/js/453.490aa95d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0bf48097.css",
+    "static/js/main.142b55a4.js"
+  ]
+}
