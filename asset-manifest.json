@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/chroniclesofchaossite/static/css/main.cdb2e940.css",
-    "main.js": "/chroniclesofchaossite/static/js/main.f1ba718f.js",
+    "main.css": "/chroniclesofchaossite/static/css/main.9e5be3cf.css",
+    "main.js": "/chroniclesofchaossite/static/js/main.57e9fb8c.js",
     "static/js/453.490aa95d.chunk.js": "/chroniclesofchaossite/static/js/453.490aa95d.chunk.js",
     "index.html": "/chroniclesofchaossite/index.html",
-    "main.cdb2e940.css.map": "/chroniclesofchaossite/static/css/main.cdb2e940.css.map",
-    "main.f1ba718f.js.map": "/chroniclesofchaossite/static/js/main.f1ba718f.js.map",
+    "main.9e5be3cf.css.map": "/chroniclesofchaossite/static/css/main.9e5be3cf.css.map",
+    "main.57e9fb8c.js.map": "/chroniclesofchaossite/static/js/main.57e9fb8c.js.map",
     "453.490aa95d.chunk.js.map": "/chroniclesofchaossite/static/js/453.490aa95d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cdb2e940.css",
-    "static/js/main.f1ba718f.js"
+    "static/css/main.9e5be3cf.css",
+    "static/js/main.57e9fb8c.js"
   ]
 }
