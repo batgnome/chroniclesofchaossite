@@ -147,4 +147,81 @@ footer p {
     cursor: pointer;
     margin-top: 0.5rem;
   }
+  .comic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .comic-card {
+    background: #222;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .comic-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .comic-link {
+    display: block;
+    margin-top: 10px;
+    background: #ff8c00;
+    color: white;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .comic-page {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .comic-page img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  .comic-reader {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .comic-page {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+  
+  .episode-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .episode-card {
+    background: #222;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .read-button {
+    display: block;
+    margin-top: 10px;
+    background: #ff8c00;
+    color: white;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+  }
   

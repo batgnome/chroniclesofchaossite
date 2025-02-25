@@ -1,11 +1,22 @@
+import { Link } from "react-router-dom";
+import comics from "../data/comicsData";
+
 function Comics() {
-    return (
-      <div>
-        <h1>Comics</h1>
-        <p>Check out my latest comics and webtoons here!</p>
+  return (
+    <div className="comics-page">
+      <h1>Comics</h1>
+      <div className="comic-list">
+        {comics.map((comic) => (
+          <div key={comic.id} className="comic-card">
+            <img src={comic.image} alt={comic.title} />
+            <h2>{comic.title}</h2>
+            <p>{comic.description}</p>
+            <Link to={`/comics/${comic.id}`} className="comic-link">Read More</Link>
+          </div>
+        ))}
       </div>
-    );
-  }
-  
-  export default Comics;
-  
+    </div>
+  );
+}
+
+export default Comics;
