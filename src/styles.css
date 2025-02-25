@@ -1,3 +1,4 @@
+/* === Global Styles === */
 body {
     font-family: "Courier New", monospace;
     margin: 0;
@@ -7,51 +8,64 @@ body {
     background-image: url('https://example.com/abandoned-railroad.jpg'); /* Replace with your image */
     background-size: cover;
     background-attachment: fixed;
-}
-header {
+  }
+  
+  /* === Header === */
+  header {
     background-color: #228B22;
     padding: 1rem;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-header h1 {
+  }
+  
+  header h1 {
     color: #FF8C00;
     font-size: 2.5rem;
     margin: 0;
-}
-header p {
+  }
+  
+  header p {
     font-size: 1.2rem;
     margin: 0.5rem 0;
-}
-nav {
+  }
+  
+  /* === Navigation === */
+  nav {
     display: flex;
     justify-content: center;
     background-color: #333;
     padding: 0.5rem;
-}
-nav a {
+  }
+  
+  nav a {
     color: #FF8C00;
     text-decoration: none;
     margin: 0 1rem;
     font-size: 1rem;
-}
-nav a:hover {
+  }
+  
+  nav a:hover {
     color: #DAA520;
-}
-.hero {
+  }
+  
+  /* === Hero Section === */
+  .hero {
     text-align: center;
     padding: 4rem 1rem;
     background: rgba(0, 0, 0, 0.5);
-}
-.hero h2 {
+  }
+  
+  .hero h2 {
     font-size: 2rem;
     margin: 0;
-}
-.hero p {
+  }
+  
+  .hero p {
     font-size: 1.2rem;
     margin: 1rem 0;
-}
-.hero button {
+  }
+  
+  .hero button {
     padding: 0.5rem 2rem;
     font-size: 1rem;
     color: #fff;
@@ -59,46 +73,54 @@ nav a:hover {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-}
-.hero button:hover {
+  }
+  
+  .hero button:hover {
     background-color: #FF8C00;
-}
-.section {
+  }
+  
+  /* === Sections & Cards === */
+  .section {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 2rem;
     justify-content: center;
-}
-.card {
+  }
+  
+  .card {
     background-color: rgba(34, 34, 34, 0.8);
     padding: 1rem;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     text-align: center;
-}
-.card img {
+  }
+  
+  .card img {
     width: 100%;
     border-radius: 8px;
-}
-.card h3 {
+  }
+  
+  .card h3 {
     font-size: 1.5rem;
     color: #FF8C00;
-}
-.card p {
-    font-size: 1rem;
-}
-footer {
+  }
+  
+  /* === Footer === */
+  footer {
     background-color: #333;
     color: #f5f5f5;
     text-align: center;
     padding: 1rem;
-}
-footer p {
+  }
+  
+  footer p {
     font-size: 0.8rem;
-}
-.blog-form {
+  }
+  
+  /* === Blog Section === */
+  .blog-form {
     background: #333;
     padding: 1rem;
     border-radius: 8px;
@@ -147,6 +169,8 @@ footer p {
     cursor: pointer;
     margin-top: 0.5rem;
   }
+  
+  /* === Comic List Page === */
   .comic-list {
     display: flex;
     flex-wrap: wrap;
@@ -178,28 +202,47 @@ footer p {
     border-radius: 5px;
   }
   
-  .comic-page {
-    text-align: center;
-    padding: 2rem;
-  }
-  
-  .comic-page img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
+  /* === Comic Reader (Page Flip Book) === */
   .comic-reader {
     text-align: center;
     padding: 2rem;
+    overflow: hidden; /* Prevents unwanted scrolling */
+    touch-action: manipulation; /* Improves touch response */
   }
   
-  .comic-page {
+  .flipbook {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    user-select: none; /* Prevents accidental text selection */
+  }
+  
+  .page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 800px;
-    margin-bottom: 1rem;
-    border-radius: 8px;
+    height: 100%;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
+  .page img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+    object-fit: contain;
+  }
+  
+  /* === Episode List === */
   .episode-list {
     display: flex;
     flex-wrap: wrap;
