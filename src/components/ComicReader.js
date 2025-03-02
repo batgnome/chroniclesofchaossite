@@ -7,7 +7,8 @@ function ComicReader() {
 
   // Generate image URLs dynamically
   const pages = Array.from({ length: totalPages }, (_, i) => 
-    `${process.env.PUBLIC_URL}/ChroniclesOfChaos/episode${episode}page(${i + 1}).png`
+    // `${process.env.PUBLIC_URL}/ChroniclesOfChaos/episode${episode}page(${i + 1}).png`
+    `${process.env.PUBLIC_URL}/ChroniclesOfChaos/page(${i + 1}).png`
   );
 
   return (
