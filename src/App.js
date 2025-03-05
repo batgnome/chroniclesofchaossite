@@ -16,6 +16,7 @@ import Essays from "./pages/Essays";
 import Games from "./pages/Games";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Animations from "./pages/Animations";
 import "./styles.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         {/* <Route path="/essays" element={<Essays />} /> */}
         {/* <Route path="/games" element={<Games />} /> */}
         <Route path="/about" element={<About />} />
+        <Route path="/animations" element={<Animations />} />
         {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
       <Footer />
