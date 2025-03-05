@@ -1,24 +1,37 @@
+import { useState } from "react";
 import "./Animations.css";
 
+const animationFiles = [
+  "Skate",
+  "ArcherJohnAndTheGiant",
+  "wildChild",
+];
+
 function Animations() {
+  const [currentAnimation, setCurrentAnimation] = useState(animationFiles[0]);
+
   return (
     <div className="animations-page">
       <div className="main-player">
         <img
-          src={`${process.env.PUBLIC_URL}/animations/Skate.gif`}
-          alt="Main Animation"
+          src={`${process.env.PUBLIC_URL}/animations/${currentAnimation}.gif`}
+          alt={currentAnimation}
           className="main-video"
         />
       </div>
 
       <div className="side-scroll-bar">
-        {[...Array(10)].map((_, index) => (
-          <div key={index} className="video-thumbnail">
+        {animationFiles.map((file, index) => (
+          <div
+            key={index}
+            className="video-thumbnail"
+            onClick={() => setCurrentAnimation(file)}
+          >
             <img
-              src={`${process.env.PUBLIC_URL}/animations/placeholder-thumbnail.png`}
-              alt={`Placeholder ${index + 1}`}
+              src={`${process.env.PUBLIC_URL}/animations/${file}.png`}
+              alt={file}
             />
-            <p>Animation {index + 1}</p>
+            <p>{file.replace(".gif", "")}</p>
           </div>
         ))}
       </div>
