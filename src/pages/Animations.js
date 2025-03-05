@@ -14,7 +14,7 @@ function Animations() {
     <div className="animations-page">
       <div className="main-player">
         <img
-          src={`${process.env.PUBLIC_URL}/animations/${currentAnimation}.gif`}
+          src={`${process.env.PUBLIC_URL}/Animations/${currentAnimation}.gif`}
           alt={currentAnimation}
           className="main-video"
         />
@@ -28,7 +28,7 @@ function Animations() {
             onClick={() => setCurrentAnimation(file)}
           >
             <img
-              src={`${process.env.PUBLIC_URL}/animations/${file}.png`}
+              src={`${process.env.PUBLIC_URL}/Animations/${file}.png`}
               alt={file}
             />
             <p>{file.replace(".gif", "")}</p>
