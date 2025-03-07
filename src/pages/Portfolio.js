@@ -34,7 +34,7 @@ function Portfolio() {
 
       <div className="portfolio-grid">
         {portfolioFiles.map((file, index) => {
-          const filePath = `${process.env.PUBLIC_URL}/portfolio/${file}`;
+          const filePath = `${process.env.PUBLIC_URL}/Portfolio/${file}`;
           return (
             <div
               key={index}
