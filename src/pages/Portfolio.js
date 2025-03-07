@@ -63,13 +63,13 @@ function Portfolio() {
           {isVideo(activeMedia) ? (
             <video controls autoPlay>
               <source
-                src={`${process.env.PUBLIC_URL}/portfolio/${activeMedia}`}
+                src={`${process.env.PUBLIC_URL}/Portfolio/${activeMedia}`}
                 type="video/mp4"
               />
             </video>
           ) : (
             <img
-              src={`${process.env.PUBLIC_URL}/portfolio/${activeMedia}`}
+              src={`${process.env.PUBLIC_URL}/Portfolio/${activeMedia}`}
               alt="Expanded"
             />
           )}
