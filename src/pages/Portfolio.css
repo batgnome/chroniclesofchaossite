@@ -1,0 +1,103 @@
+.portfolio-page {
+    padding: 2rem;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .portfolio-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 2rem;
+  }
+  
+  .portfolio-item {
+    background: #333;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .portfolio-item img,
+  .portfolio-item video {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    max-height: 400px;
+  }
+  /* Existing styles remain... */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .overlay img,
+  .overlay video {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .overlay img,
+  .overlay video {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  }
+  
+  .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .nav-btn.left {
+    left: 30px;
+  }
+  
+  .nav-btn.right {
+    right: 30px;
+  }
+  

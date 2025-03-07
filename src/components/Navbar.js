@@ -5,6 +5,7 @@ function Navbar() {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/Animations">Animations</Link>
+      <Link to="/Portfolio">Portfolio</Link>
       {/* <Link to="/blog">Blog</Link> */}
       <Link to="/comics">Comics</Link>
       {/* <Link to="/stories">Short Stories</Link>

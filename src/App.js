@@ -17,6 +17,7 @@ import Games from "./pages/Games";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Animations from "./pages/Animations";
+import Portfolio from "./pages/Portfolio";
 import "./styles.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" element={<Hero />} />
         {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/comics" element={<Comics />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/comics/:id" element={<ComicPage />} />
         <Route path="/comics/chronicles-of-chaos" element={<ComicReader />} />
         <Route path="/comics/chronicles-of-chaos/episode/:episode" element={<ComicReader />} />
