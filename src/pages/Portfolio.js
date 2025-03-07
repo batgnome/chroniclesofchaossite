@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Portfolio.css";
-
+//fix
 const totalImages = 82;
 const totalVideos = 5;
 
