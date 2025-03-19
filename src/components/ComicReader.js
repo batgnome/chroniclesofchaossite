@@ -3,7 +3,7 @@ import HTMLFlipBook from "react-pageflip";
 
 function ComicReader() {
   const { episode } = useParams();
-  const totalPages = 54; // Change based on your episodes
+  const totalPages = 62; // Change based on your episodes
 
   // Generate image URLs dynamically
   const pages = Array.from({ length: totalPages }, (_, i) => 
