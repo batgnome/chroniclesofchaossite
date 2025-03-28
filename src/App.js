@@ -30,9 +30,10 @@ function App() {
         {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/comics" element={<Comics />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/comics/:id" element={<ComicPage />} />
-        <Route path="/comics/chronicles-of-chaos" element={<ComicReader />} />
-        <Route path="/comics/chronicles-of-chaos/episode/:episode" element={<ComicReader />} />
+        <Route path="/comics/:id" element={<ComicReader />} />
+
+        {/* <Route path="/comics/chronicles-of-chaos" element={<ComicReader />} /> */}
+        
         {/* <Route path="/stories" element={<Stories />} /> */}
         {/* <Route path="/essays" element={<Essays />} /> */}
         {/* <Route path="/games" element={<Games />} /> */}
