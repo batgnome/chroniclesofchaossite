@@ -27,7 +27,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
-        {/* <Route path="/blog" element={<Blog />} /> */}
+        <Route path="/blog" element={<Blog />} />
         <Route path="/comics" element={<Comics />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/comics/:id" element={<ComicReader />} />
@@ -36,7 +36,7 @@ function App() {
         
         {/* <Route path="/stories" element={<Stories />} /> */}
         {/* <Route path="/essays" element={<Essays />} /> */}
-        {/* <Route path="/games" element={<Games />} /> */}
+        <Route path="/games" element={<Games />} />
         <Route path="/about" element={<About />} />
         <Route path="/animations" element={<Animations />} />
         {/* <Route path="/contact" element={<Contact />} /> */}

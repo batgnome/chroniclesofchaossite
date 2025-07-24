@@ -26,6 +26,7 @@ function Animations() {
             key={index}
             className="video-thumbnail"
             onClick={() => setCurrentAnimation(file)}
+            style={{cursor: "pointer"}}
           >
             <img
               src={`${process.env.PUBLIC_URL}/Animations/${file}.png`}
