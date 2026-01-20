@@ -12,6 +12,7 @@ function Navbar() {
       <Link to="/essays">Essays</Link>
       <Link to="/games">Games</Link>
       <Link to="/about">About</Link>
+      <Link to="/admin">Admin</Link>
       {/* <Link to="/contact">Contact</Link> */}
     </nav>
   );

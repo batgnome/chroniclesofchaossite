@@ -18,6 +18,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Animations from "./pages/Animations";
 import Portfolio from "./pages/Portfolio";
+import Admin from "./pages/admin";
 import "./styles.css";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         <Route path="/comics" element={<Comics />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/comics/:id" element={<ComicReader />} />
-
+        <Route path="/admin" element={<Admin />} />
         {/* <Route path="/comics/chronicles-of-chaos" element={<ComicReader />} /> */}
         
         {/* <Route path="/stories" element={<Stories />} /> */}
