@@ -5,7 +5,7 @@ import comics from "../data/comicsData";
 
 function ComicReader() {
   const totalPages = 61; // Adjust based on your episodes
-  const { id } = useParams();
+  // const { id } = useParams();
   const comic = comics.find((c) => c.id === id); // 👈 look up the comic by ID
   const bookRef = useRef();
   const [currentPage, setCurrentPage] = useState(0);
