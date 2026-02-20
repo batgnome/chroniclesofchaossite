@@ -14,7 +14,8 @@ function Animations() {
     <div className="animations-page">
       <div className="main-player">
         <img
-          src={`${process.env.PUBLIC_URL}/Animations/${currentAnimation}.gif`}
+          // src={`${process.env.PUBLIC_URL}/Animations/${currentAnimation}.gif`}
+          src={`${process.env.PUBLIC_URL}https://assets.chronofchaos.com/animations/${currentAnimation}.gif`}
           alt={currentAnimation}
           className="main-video"
         />
@@ -29,7 +30,7 @@ function Animations() {
             style={{cursor: "pointer"}}
           >
             <img
-              src={`${process.env.PUBLIC_URL}/Animations/${file}.png`}
+              src={`${process.env.PUBLIC_URL}https://assets.chronofchaos.com/animations/${file}.png`}
               alt={file}
             />
             <p>{file.replace(".gif", "")}</p>

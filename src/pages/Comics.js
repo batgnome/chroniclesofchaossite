@@ -12,6 +12,7 @@ function Comics() {
             <h2>{comic.title}</h2>
             <p>{comic.description}</p>
             <Link to={`/comics/${comic.id}`} className="comic-link">Read More</Link>
+            <Link to={`/comics2/${comic.id}`} className="comic-link">Read More</Link>
           </div>
         ))}
       </div>

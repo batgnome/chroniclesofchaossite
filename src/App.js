@@ -33,7 +33,7 @@ function App() {
         <Route path="/comics" element={<Comics />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/comics/:id" element={<ComicReader />} />
-        <Route path="/comics/:id" element={<ComicReader_2 />} />
+        <Route path="/comics2/:id" element={<ComicReader_2 />} />
         <Route path="/admin" element={<Admin />} />
         {/* <Route path="/comics/chronicles-of-chaos" element={<ComicReader />} /> */}
         
