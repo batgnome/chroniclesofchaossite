@@ -4,16 +4,17 @@ import HTMLFlipBook from "react-pageflip";
 import comics from "../data/comicsData";
 
 function ComicReader() {
-  const totalPages = 62; // Adjust based on your episodes
+  const totalPages = 61; // Adjust based on your episodes
   const { id } = useParams();
   const comic = comics.find((c) => c.id === id); // 👈 look up the comic by ID
   const bookRef = useRef();
   const [currentPage, setCurrentPage] = useState(0);
   const [gotoInput, setGotoInput] = useState("");
 
-  const pages = Array.from({ length: totalPages }, (_, i) =>
-    `${process.env.PUBLIC_URL}/${comic.imageSource}/page(${i + 1}).png`
-  );
+const pages = Array.from({ length: totalPages }, (_, i) => {
+  const pageNumber = String(i + 1).padStart(4, "0");
+  return `${process.env.PUBLIC_URL}${comic.imageSource}/page${pageNumber}.png`;
+});
 
   const goToPage = (pageNum) => {
     if (bookRef.current) {
@@ -37,7 +38,7 @@ function ComicReader() {
     <div className="comic-reader">
       
       <h1>{comic.title}</h1>
-<h1>{currentPage}</h1>
+
       {/* 📘 Navigation Controls */}
       <div style={{ marginBottom: "1rem" }}>
         <button onClick={() => goToPage(0)} disabled={currentPage === 0}>

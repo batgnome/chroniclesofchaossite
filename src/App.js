@@ -11,6 +11,7 @@ import Comics from "./pages/Comics";
 import ComicPage from "./pages/ComicPage";
 import ComicEpisodes from "./pages/ComicEpisodes";
 import ComicReader from "./components/ComicReader";
+import ComicReader_2 from "./components/ComicReader_2";
 import Stories from "./pages/Stories";
 import Essays from "./pages/Essays";
 import Games from "./pages/Games";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/comics" element={<Comics />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/comics/:id" element={<ComicReader />} />
+        <Route path="/comics/:id" element={<ComicReader_2 />} />
         <Route path="/admin" element={<Admin />} />
         {/* <Route path="/comics/chronicles-of-chaos" element={<ComicReader />} /> */}
         

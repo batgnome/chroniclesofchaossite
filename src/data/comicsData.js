@@ -2,7 +2,7 @@ const comics = [
     {
       id: "chronicles-of-chaos",
       title: "Chronicles of Chaos",
-      imageSource: "ChroniclesOfChaos",
+      imageSource: "https://assets.chronofchaos.com",
       description: "Follow the adventures of Benny and Fred as they navigate a strange world.",
       image: "/TitleCards/ChroniclesOfChaosTitleCard.png",
     }
