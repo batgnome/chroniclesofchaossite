@@ -16,7 +16,7 @@ import Stories from "./pages/Stories";
 import Essays from "./pages/Essays";
 import Games from "./pages/Games";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+// import Contact from "./pages/Contact";
 import Animations from "./pages/Animations";
 import Portfolio from "./pages/Portfolio";
 import Admin from "./pages/admin";
