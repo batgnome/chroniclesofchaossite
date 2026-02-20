@@ -12,11 +12,11 @@ function Admin() {
     }
   }, []);
 
-  const addPost = (newPost) => {
-    const updatedPosts = [newPost, ...posts];
-    setPosts(updatedPosts);
-    localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
-  };
+  // const addPost = (newPost) => {
+  //   const updatedPosts = [newPost, ...posts];
+  //   setPosts(updatedPosts);
+  //   localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
+  // };
 
   return (
     <div>

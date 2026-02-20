@@ -23,7 +23,6 @@ function Square({value,onSquareClick}){
 
 
 function TicTacToe(props){
-    const [turn, setTurn] = useState('X');
     const [xIsNext, setXIsNext] = useState(true);
     const [squares, setSquares] = useState(Array(9).fill(null));
 
