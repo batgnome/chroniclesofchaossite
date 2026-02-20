@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import comics from "../data/comicsData";
-
+import "./Comics.css";
 function Comics() {
   return (
     <div className="comics-page">

@@ -1,10 +1,21 @@
 import { useState } from "react"
-
+import "./TicTacToe.css";
 function Square({value,onSquareClick}){
     
     return (
 
-        <button style={{width: 100,height: 100, background: '#693030ff'}} onClick={onSquareClick}>
+        <button      style={{
+  width: 100,
+        height: 100,
+        background: "#693030ff",
+        padding: 0,
+        verticalAlign: "top",      // prevents baseline weirdness
+        fontSize: 48,
+        lineHeight: "100px",       // centers text vertically
+        textAlign: "center",       // centers horizontally
+        border: "1px solid #000",
+        display: "inline-block"
+      }} onClick={onSquareClick}>
             {value}
         </button>
     )
@@ -56,7 +67,7 @@ function TicTacToe(props){
         return null;
     }
     return (
-        <div>
+        <div className="game-board">
             <div className="status">{status}</div>
            <div className="board-row">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)} />

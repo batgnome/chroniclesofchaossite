@@ -21,8 +21,17 @@ function Admin() {
   return (
     <div>
       <h1>Blog</h1>
-      <BlogForm addPost={addPost} />
-      <BlogList />
+      <div>
+        <h2>Admin Panel</h2>
+        <p>Here you can add new blog posts.</p>
+        <h2>Blog posts</h2>
+        <p>{posts.length} posts available</p>
+      </div>
+      <div>
+        <h2>settings</h2>
+      </div>
+      {/* <BlogForm addPost={addPost} /> */}
+      {/* <BlogList /> */}
     </div>
   );
 }
