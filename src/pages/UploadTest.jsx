@@ -30,6 +30,10 @@ export default function UploadTest() {
     });
 
     if (!putRes.ok) {
+        const text = await putRes.text().catch(() => "");
+        throw new Error(`Upload failed: ${putRes.status} ${text}`);
+        }
+    if (!putRes.ok) {
       setStatus(`Upload failed: ${putRes.status} ${await putRes.text()}`);
       return;
     }

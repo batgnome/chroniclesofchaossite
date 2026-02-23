@@ -13,19 +13,20 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: "Invalid key prefix" });
     }
 
-    const client = new S3Client({
-      region: "auto",
-      endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-      credentials: {
-        accessKeyId: process.env.R2_ACCESS_KEY_ID,
-        secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
-      },
-    });
+const client = new S3Client({
+  region: "auto",
+  endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  forcePathStyle: true,
+  credentials: {
+    accessKeyId: process.env.R2_ACCESS_KEY_ID,
+    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+  },
+});
 
     const command = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET,
       Key: key,
-    //   ContentType: contentType || "application/octet-stream",
+      ContentType: contentType || "application/octet-stream",
     });
 
     const uploadUrl = await getSignedUrl(client, command, { expiresIn: 60 });
