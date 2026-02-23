@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     const command = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET,
       Key: key,
-      ContentType: contentType || "application/octet-stream",
+    //   ContentType: contentType || "application/octet-stream",
     });
 
     const uploadUrl = await getSignedUrl(client, command, { expiresIn: 60 });
