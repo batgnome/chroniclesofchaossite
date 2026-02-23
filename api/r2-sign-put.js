@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   try {
     if (req.method !== "POST") return res.status(405).send("Method not allowed");
 
-    let { key } = req.body || {};
+    let { key, contentType } = req.body || {};
     if (!key || typeof key !== "string") return res.status(400).json({ error: "Missing key" });
 
     // sanitize
@@ -32,10 +32,16 @@ module.exports = async (req, res) => {
     });
 
     // keep the command minimal (no ContentType, no metadata, no checksum fields)
-    const cmd = new PutObjectCommand({
+    const cmdInput = {
       Bucket: process.env.R2_BUCKET,
       Key: key,
-    });
+    };
+
+    if (typeof contentType === "string" && contentType.trim()) {
+      cmdInput.ContentType = contentType.trim();
+    }
+
+    const cmd = new PutObjectCommand(cmdInput);
 
     const uploadUrl = await getSignedUrl(client, cmd, { expiresIn: 60 });
     const publicUrl = `${process.env.R2_PUBLIC_BASE_URL}/${key}`;

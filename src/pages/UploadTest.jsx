@@ -8,37 +8,38 @@ export default function UploadTest() {
   async function upload() {
     if (!file) return setStatus("Pick a file first.");
 
-    setStatus("Signing...");
-    const signRes = await fetch("/api/r2-sign-put", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key, contentType: file.type }),
-    });
+    try {
+      setStatus("Signing...");
+      const signRes = await fetch("/api/r2-sign-put", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key, contentType: file.type }),
+      });
 
-    if (!signRes.ok) {
-      setStatus(`Sign failed: ${await signRes.text()}`);
-      return;
-    }
+      if (!signRes.ok) {
+        setStatus(`Sign failed: ${await signRes.text()}`);
+        return;
+      }
 
-    const { uploadUrl, publicUrl } = await signRes.json();
+      const { uploadUrl, publicUrl } = await signRes.json();
 
-    setStatus("Uploading to R2...");
-    const putRes = await fetch(uploadUrl, {
-      method: "PUT",
-      headers: { "Content-Type": file.type || "application/octet-stream" },
-      body: file,
-    });
+      setStatus("Uploading to R2...");
+      const putRes = await fetch(uploadUrl, {
+        method: "PUT",
+        headers: { "Content-Type": file.type || "application/octet-stream" },
+        body: file,
+      });
 
-    if (!putRes.ok) {
+      if (!putRes.ok) {
         const text = await putRes.text().catch(() => "");
-        throw new Error(`Upload failed: ${putRes.status} ${text}`);
-        }
-    if (!putRes.ok) {
-      setStatus(`Upload failed: ${putRes.status} ${await putRes.text()}`);
-      return;
-    }
+        setStatus(`Upload failed: ${putRes.status} ${text}`);
+        return;
+      }
 
-    setStatus(`✅ Uploaded!\n${publicUrl}`);
+      setStatus(`✅ Uploaded!\n${publicUrl}`);
+    } catch (err) {
+      setStatus(`Upload request failed before response (usually CORS/preflight): ${err.message}`);
+    }
   }
 
   return (
