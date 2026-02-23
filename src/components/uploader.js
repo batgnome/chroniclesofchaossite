@@ -13,23 +13,42 @@ export default function R2UploadTest() {
     }
 
     setIsUploading(true);
-    setStatus("Uploading...");
+    setStatus("Signing upload...");
 
     try {
-      const res = await fetch(`http://localhost:8787/${key}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": file.type || "application/octet-stream",
-        },
-        body: file, // IMPORTANT: send the raw file bytes
+      // 1) Ask Vercel function for a signed URL
+      const signRes = await fetch("/api/r2-sign-put", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          key,
+          // keep this if your API still accepts it; safe either way
+          contentType: file.type || "application/octet-stream",
+        }),
       });
 
-      if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(`Upload failed: ${res.status} ${text}`);
+      if (!signRes.ok) {
+        const text = await signRes.text().catch(() => "");
+        throw new Error(`Sign failed: ${signRes.status} ${text}`);
       }
 
-      setStatus(`✅ Uploaded to ${key}`);
+      const { uploadUrl, publicUrl } = await signRes.json();
+
+      // 2) PUT directly to R2 using the signed URL
+      setStatus("Uploading to R2...");
+      const putRes = await fetch(uploadUrl, {
+        method: "PUT",
+        body: file,
+        // IMPORTANT: for now, do NOT set headers.
+        // Presigned URLs can be picky; we’ll add Content-Type later once it works.
+      });
+
+      if (!putRes.ok) {
+        const text = await putRes.text().catch(() => "");
+        throw new Error(`Upload failed: ${putRes.status}\n${text}`);
+      }
+
+      setStatus(`✅ Uploaded!\n${publicUrl}`);
     } catch (err) {
       setStatus(`❌ ${err.message}`);
     } finally {
@@ -39,7 +58,7 @@ export default function R2UploadTest() {
 
   return (
     <div style={{ padding: 16, maxWidth: 700 }}>
-      <h2>R2 Upload Test (local worker)</h2>
+      <h2>R2 Upload Test</h2>
 
       <div style={{ marginBottom: 12 }}>
         <label style={{ display: "block", marginBottom: 6 }}>R2 key (path)</label>
@@ -50,7 +69,7 @@ export default function R2UploadTest() {
           placeholder="comics/test/cover.jpg"
         />
         <div style={{ fontSize: 12, opacity: 0.8, marginTop: 6 }}>
-          This becomes: <code>http://localhost:8787/{key}</code>
+          Uploading key: <code>{key}</code>
         </div>
       </div>
 
