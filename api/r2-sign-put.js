@@ -46,7 +46,11 @@ module.exports = async (req, res) => {
     const uploadUrl = await getSignedUrl(client, cmd, { expiresIn: 60 });
     const publicUrl = `${process.env.R2_PUBLIC_BASE_URL}/${key}`;
 
-    return res.status(200).json({ uploadUrl, publicUrl });
+        return res.status(200).json({
+    uploadUrl,
+    publicUrl,
+    uploadHost: new URL(uploadUrl).host,
+    });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Failed to sign upload" });
