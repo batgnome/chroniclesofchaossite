@@ -26,6 +26,7 @@ const client = new S3Client({
     const command = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET,
       Key: key,
+      CheckSumAlgorithm: undefined,
       ContentType: contentType || "application/octet-stream",
     });
 
