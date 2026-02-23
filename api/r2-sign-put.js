@@ -10,7 +10,12 @@ module.exports = async (req, res) => {
 
     // sanitize
     key = key.replace(/^\/+/, "");
-
+    // IMPORTANT: prevent double "comics/"
+    key = key.replace(/^comics\//, "comics/"); // keeps one
+    // more explicitly:
+    while (key.startsWith("comics/comics/")) {
+    key = key.replace("comics/comics/", "comics/");
+    }
     // allow only these prefixes
     if (!key.startsWith("comics/") && !key.startsWith("posts/")) {
       return res.status(400).json({ error: "Invalid key prefix" });
@@ -44,7 +49,7 @@ module.exports = async (req, res) => {
     const cmd = new PutObjectCommand(cmdInput);
 
     const uploadUrl = await getSignedUrl(client, cmd, { expiresIn: 60 });
-    const publicUrl = `${process.env.R2_PUBLIC_BASE_URL}/${key}`;
+    const publicUrl = `${R2_PUBLIC_BASE_URL}/${key}`;
 
         return res.status(200).json({
     uploadUrl,
