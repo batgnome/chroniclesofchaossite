@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     const cmd = new PutObjectCommand(cmdInput);
 
     const uploadUrl = await getSignedUrl(client, cmd, { expiresIn: 60 });
-    const publicUrl = `${R2_PUBLIC_BASE_URL}/${key}`;
+    const publicUrl = `${process.env.R2_PUBLIC_BASE_URL}/${key}`;
 
         return res.status(200).json({
     uploadUrl,
