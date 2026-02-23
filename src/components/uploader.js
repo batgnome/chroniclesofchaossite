@@ -58,12 +58,14 @@ export default function R2UploadTest() {
   return (
     <div style={{ padding: 16, maxWidth: 700 }}>
       <h2>R2 Upload Test</h2>
-
+<div>
+uploadhost: {uploadHost}
       {uploadHost && (
-        <div style={{ marginBottom: 12, fontSize: 12 }}>
+          <div style={{ marginBottom: 12, fontSize: 12 }}>
           Upload Host: {uploadHost}
         </div>
       )}
+      </div>
 
       <div style={{ marginBottom: 12 }}>
         <label style={{ display: "block", marginBottom: 6 }}>R2 key (path)</label>
