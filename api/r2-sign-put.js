@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
     key = key.replace(/^\/+/, "");
     key = key.replace(/^comics\//, "");   // strip if user included it
-    key = `comics/${key}`;               // force exactly one prefix
+    // key = `${key}`;               // force exactly one prefix
 
     const client = new S3Client({
       region: "auto",
