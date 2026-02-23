@@ -21,6 +21,8 @@ import Animations from "./pages/Animations";
 import Portfolio from "./pages/Portfolio";
 import Admin from "./pages/admin";
 import "./styles.css";
+import UploadTest from "./pages/UploadTest";
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/upload-test" element={<UploadTest />} />
         <Route path="/comics" element={<Comics />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/comics/:id" element={<ComicReader />} />
