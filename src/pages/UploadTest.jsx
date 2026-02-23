@@ -1,66 +1,95 @@
 import { useState } from "react";
 
-export default function UploadTest() {
+export default function R2UploadTest() {
   const [file, setFile] = useState(null);
   const [key, setKey] = useState("comics/test/cover.jpg");
   const [status, setStatus] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadHost, setUploadHost] = useState("");
 
-  async function upload() {
-    if (!file) return setStatus("Pick a file first.");
+  async function handleUpload() {
+    if (!file) {
+      setStatus("Pick a file first.");
+      return;
+    }
+
+    setIsUploading(true);
+    setStatus("Signing upload...");
 
     try {
-      setStatus("Signing...");
       const signRes = await fetch("/api/r2-sign-put", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key, contentType: file.type }),
+        body: JSON.stringify({
+          key,
+          contentType: file.type || "application/octet-stream",
+        }),
       });
 
       if (!signRes.ok) {
-        setStatus(`Sign failed: ${await signRes.text()}`);
-        return;
+        const text = await signRes.text().catch(() => "");
+        throw new Error(`Sign failed: ${signRes.status}\n${text}`);
       }
 
-      const { uploadUrl, publicUrl } = await signRes.json();
+      const data = await signRes.json();
+      const { uploadUrl, publicUrl } = data;
+
+      setUploadHost(data.uploadHost || new URL(uploadUrl).host);
 
       setStatus("Uploading to R2...");
       const putRes = await fetch(uploadUrl, {
         method: "PUT",
-        headers: { "Content-Type": file.type || "application/octet-stream" },
         body: file,
       });
 
       if (!putRes.ok) {
         const text = await putRes.text().catch(() => "");
-        setStatus(`Upload failed: ${putRes.status} ${text}`);
-        return;
+        throw new Error(`Upload failed: ${putRes.status}\n${text}`);
       }
 
       setStatus(`✅ Uploaded!\n${publicUrl}`);
     } catch (err) {
-      setStatus(`Upload request failed before response (usually CORS/preflight): ${err.message}`);
+      setStatus(`❌ ${err.message}`);
+    } finally {
+      setIsUploading(false);
     }
   }
 
   return (
-    <div style={{ padding: 16 }}>
+    <div style={{ padding: 16, maxWidth: 700 }}>
       <h2>R2 Upload Test</h2>
+<div>
+uploadhost: {uploadHost}
+      {uploadHost && (
+          <div style={{ marginBottom: 12, fontSize: 12 }}>
+          Upload Host: {uploadHost}
+        </div>
+      )}
+      </div>
 
-      <div style={{ marginBottom: 8 }}>
-        <div>Key (path in bucket):</div>
+      <div style={{ marginBottom: 12 }}>
+        <label style={{ display: "block", marginBottom: 6 }}>R2 key (path)</label>
         <input
           value={key}
           onChange={(e) => setKey(e.target.value)}
-          style={{ width: 500, padding: 6 }}
+          style={{ width: "100%", padding: 8 }}
+          placeholder="comics/test/cover.jpg"
         />
       </div>
 
-      <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
-      <div style={{ marginTop: 8 }}>
-        <button onClick={upload}>Upload</button>
+      <div style={{ marginBottom: 12 }}>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+        />
       </div>
 
-      <pre style={{ marginTop: 12 }}>{status}</pre>
+      <button onClick={handleUpload} disabled={!file || isUploading}>
+        {isUploading ? "Uploading..." : "Upload"}
+      </button>
+
+      <div style={{ marginTop: 12, whiteSpace: "pre-wrap" }}>{status}</div>
     </div>
   );
 }
