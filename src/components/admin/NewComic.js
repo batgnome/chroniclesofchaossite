@@ -1,16 +1,49 @@
-import { useEffect, useState } from "react";
+import { useState,useEffect } from "react";
+import R2UploadTest from "../../pages/UploadTest";
 
-export default function R2UploadTest({ onUploaded, initialKey = "comics/tes2t/cover.jpg",source }) {
+function slugify(str) {
+  return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function NewComic() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [coverUrl, setCoverUrl] = useState("");
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
-  const [key, setKey] = useState(initialKey);
+  const [key, setKey] = useState("comics/test/cover.jpg");
   const [status, setStatus] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [uploadHost, setUploadHost] = useState("");
 
-  useEffect(() => setKey(initialKey), [initialKey]);
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  // Create + cleanup preview URL
+    const id = slugify(title);
+
+    const payload = {
+      id,
+      title,
+      description,
+      coverImage: coverUrl, // <-- from upload
+      assetBaseUrl: `https://assets.chronofchaos.com/comics/${id}`,
+      pageExt: "webp",
+      pageDigits: 4,
+      chapters: [{ id: "ch01", title: "Chapter 1", pageCount: 0 }],
+      status: "active",
+    };
+
+    const res = await fetch("/api/comics", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return alert(data.error || "Failed");
+    handleUpload();
+    alert("Created!");
+  }
   useEffect(() => {
     if (!file) {
       setPreviewUrl("");
@@ -52,16 +85,30 @@ export default function R2UploadTest({ onUploaded, initialKey = "comics/tes2t/co
       if (!putRes.ok) throw new Error(`Upload failed: ${putRes.status}`);
 
       setStatus(`✅ Uploaded!\n${publicUrl}`);
-      onUploaded?.({ publicUrl, key });
+    //   onUploaded?.({ publicUrl, key });
     } catch (err) {
       setStatus(`❌ ${err.message}`);
     } finally {
       setIsUploading(false);
     }
   }
-
   return (
-    <div style={{ padding: 16, maxWidth: 700 }}>
+    <div>
+      <h1>New Comic</h1>
+
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="title">Title:</label>
+          <input id="title" required value={title} onChange={(e) => {setTitle(e.target.value); setKey(`comics/${slugify(e.target.value)}/cover.jpg`);}} />
+        </div>
+
+        <div>
+          <label htmlFor="description">Description:</label>
+          <textarea id="description" required value={description} onChange={(e) => setDescription(e.target.value)} />
+        </div>
+
+        <div>
+           <div style={{ padding: 16, maxWidth: 700 }}>
       <h2>R2 Upload</h2>
 
       <div style={{ marginBottom: 12 }}>
@@ -95,12 +142,22 @@ export default function R2UploadTest({ onUploaded, initialKey = "comics/tes2t/co
         </div>
       )}
 
-      <button onClick={handleUpload} disabled={!file || isUploading}>
+      {/* <button onClick={handleUpload} disabled={!file || isUploading}>
         {isUploading ? "Uploading..." : "Upload"}
-      </button>
+      </button> */}
 
       <div style={{ marginTop: 12, whiteSpace: "pre-wrap" }}>{status}</div>
       {uploadHost && <div style={{ marginTop: 8, fontSize: 12 }}>Upload Host: {uploadHost}</div>}
     </div>
+          {coverUrl ? <p>Cover: {coverUrl}</p> : null}
+        </div>
+
+        <button onClick={handleUpload} disabled={!file || isUploading} type="submit">
+        {isUploading ? "Uploading..." : "Upload"}
+        </button>
+      </form>
+    </div>
   );
 }
+
+export default NewComic;
