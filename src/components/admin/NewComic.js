@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import R2UploadTest from "../../pages/UploadTest";
+// import R2UploadTest from "../../pages/UploadTest";
 
 function slugify(str) {
   return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -8,7 +8,7 @@ function slugify(str) {
 function NewComic() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [coverUrl, setCoverUrl] = useState("");
+  const [coverUrl] = useState("");
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const [key, setKey] = useState("comics/test/cover.jpg");
